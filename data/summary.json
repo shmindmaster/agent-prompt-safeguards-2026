@@ -1,6 +1,6 @@
 {
   "dataset_version": "1.0.0",
-  "ruleset": "crewscore-hygiene@0.6.0",
+  "ruleset": "prompt-safeguards@0.6.0",
   "prompts": 356,
   "max_score_any_prompt": 34,
   "sources": [

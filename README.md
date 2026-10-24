@@ -27,7 +27,7 @@ The four rows in the table above are cheap to add to your own agent's instructio
 
 ## What it measures, and what it doesn't
 
-A score is the share of 23 safeguards a prompt's **text** states, averaged across 8 groups: prompt-injection resistance, hallucination guardrails, citation, cost limits, human approval, safe stopping, audit trail and compliance. Matching uses published regular-expression rules (ruleset `crewscore-hygiene@0.6.0`), with no model, so the same text always gets the same score.
+A score is the share of 23 safeguards a prompt's **text** states, averaged across 8 groups: prompt-injection resistance, hallucination guardrails, citation, cost limits, human approval, safe stopping, audit trail and compliance. Matching uses published regular-expression rules (ruleset `prompt-safeguards@0.6.0`), with no model, so the same text always gets the same score.
 
 It does **not** measure whether the agent obeys its prompt, how well the prompt is written, or what controls exist in the product's code. A low score means the text is silent, not that the product is unsafe. Both source collections are leaked or aggregated sets of unknown completeness, not random samples, and both lean toward coding assistants. See [DATASHEET.md](DATASHEET.md) for the full list of limits.
 
@@ -68,4 +68,4 @@ See [`CITATION.cff`](CITATION.cff). Write-up: [What 356 AI system prompts write 
 
 ## History
 
-The study was first run with [CrewScore](https://github.com/shmindmaster/crewscore) (now archived), where the report is `docs/validation-corpus.md`. This repository republishes it as a standalone dataset. Every per-prompt score and every summary statistic here matches the CrewScore output exactly. Two things changed: rows now carry the upstream path, source URL and content hashes, and the licence notes for the sources were corrected (the earlier report described them as CC0 and MIT; see the datasheet).
+The study was first run with the author's earlier, now-archived prompt-scoring tool. This repository republishes it as a standalone dataset. Every per-prompt score and every summary statistic here matches that tool's output exactly. Two things changed: rows now carry the upstream path, source URL and content hashes, and the licence notes for the sources were corrected (the earlier report described them as CC0 and MIT; see the datasheet).

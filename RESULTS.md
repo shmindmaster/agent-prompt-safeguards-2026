@@ -2,7 +2,7 @@
 
 # Results
 
-Dataset `1.0.0` · ruleset `crewscore-hygiene@0.6.0` · 356 prompts.
+Dataset `1.0.0` · ruleset `prompt-safeguards@0.6.0` · 356 prompts.
 Every number on this page is written by `scoring/score.py`, and `python scoring/score.py --check` fails if it drifts from a fresh run.
 
 Coverage records which of 23 safeguards a prompt's **text** states. It does not measure how well a prompt is written or how the agent behaves at runtime.
