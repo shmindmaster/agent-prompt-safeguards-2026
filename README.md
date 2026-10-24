@@ -45,7 +45,7 @@ It does **not** measure whether the agent obeys its prompt, how well the prompt 
 
 ## Reproduce
 
-Needs Python 3.10+ and git. No packages to install.
+Needs Python 3.10+ and git. No packages to install. Works on Windows, macOS and Linux; CI runs both checks on all three.
 
 ```bash
 python scoring/score.py --check   # fetch, re-score, and confirm every committed file matches
