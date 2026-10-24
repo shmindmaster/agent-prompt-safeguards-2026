@@ -20,7 +20,7 @@ What it does:
 5. Refuses to write anything if a self-check fails, including a scan proving no
    40-character run of prompt text reaches any output.
 
-Statistics follow the original CrewScore harness exactly (same seeds, same
+Statistics follow the original scoring harness exactly (same seeds, same
 procedures), so the numbers match the study as first published.
 """
 
@@ -303,7 +303,7 @@ def build_rows(corpus: Corpus, root: Path, files: list[dict]) -> list[dict]:
     return rows
 
 
-# ─── statistics (identical to the CrewScore harness) ──────────────────
+# ─── statistics (identical to the original harness) ───────────────────
 
 
 def _midranks(values: list[float]) -> list[float]:

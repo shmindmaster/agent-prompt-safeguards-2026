@@ -17,7 +17,7 @@ A prompt's category comes from the collection it was taken from. Nobody labelled
 
 ## Scoring
 
-The 23 safeguards and their rules are in [`scoring/rules.py`](scoring/rules.py) (ruleset `crewscore-hygiene@0.6.0`).
+The 23 safeguards and their rules are in [`scoring/rules.py`](scoring/rules.py) (ruleset `prompt-safeguards@0.6.0`).
 
 1. Each safeguard has one or more case-insensitive regular expressions. Several rules can express the same safeguard; they count once.
 2. The safeguards fall into 8 groups (injection, hallucination, citation, cost, human approval, safe stopping, audit, compliance) of 2 to 4 safeguards each.
@@ -26,7 +26,7 @@ The 23 safeguards and their rules are in [`scoring/rules.py`](scoring/rules.py) 
 
 So a prompt that states every safeguard scores 100, and a prompt reaches 50 only if its 8 group scores average 50 or more. No prompt in the dataset reaches 50; the highest is 34.
 
-The rules match wording, not meaning. They were tuned against this corpus in earlier CrewScore releases to remove false positives (for example "dependency injection" no longer counts as a prompt-injection defence), and that history is in the comments of `rules.py`.
+The rules match wording, not meaning. They were tuned against this corpus in earlier releases of the author's now-archived prompt-scoring tool to remove false positives (for example "dependency injection" no longer counts as a prompt-injection defence), and that history is in the comments of `rules.py`.
 
 ## Statistics
 
@@ -50,6 +50,6 @@ python scoring/score.py --check
 
 This fetches both collections at their pinned commits, re-scores all 356 prompts, and fails if any committed file (`data/*`, `RESULTS.md`, `figures/controls-by-source.svg`) differs from the fresh output. CI runs it on every push. If an upstream collection is deleted or its history rewritten, the fetch fails: that is reported, not hidden.
 
-## Changes from the original CrewScore report
+## Changes from the original report
 
-Scores and statistics are unchanged; all 356 rows were compared against CrewScore's published `docs/corpus-scores.json` and match. This version adds the upstream path, source URL and content hashes to each row, adds the "scored 50+" count, and corrects the licence notes for the two sources.
+The study was first published with the author's earlier, now-archived prompt-scoring tool. Scores and statistics are unchanged; all 356 rows were compared against that tool's published per-prompt scores and match. The ruleset, identical in content, was renamed `prompt-safeguards@0.6.0`. This version adds the upstream path, source URL and content hashes to each row, adds the "scored 50+" count, and corrects the licence notes for the two sources.

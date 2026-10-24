@@ -1,11 +1,11 @@
 """
-Ruleset crewscore-hygiene@0.6.0: the 23 written-safeguard controls.
+Ruleset prompt-safeguards@0.6.0: the 23 written-safeguard controls.
 
-This is the rule file from CrewScore 0.6.14 (crewscore/scorers/structural_analysis.py),
-copied verbatim apart from this header and the two definitions below, so the
-dataset can be re-scored with no dependency on the archived package. CrewScore
-is by the same author; this copy is relicensed under Apache-2.0 with the rest of
-the code in this repository.
+This is the rule file from the author's earlier, now-archived prompt-scoring
+tool (version 0.6.14), copied verbatim apart from this header, the two
+definitions below and comment wording, so the dataset can be re-scored with no
+dependency on the archived package. This copy is relicensed under Apache-2.0
+with the rest of the code in this repository.
 
 Runs entirely offline: no model, no API key. Matching is case-insensitive
 regular expressions over the prompt text.
@@ -17,11 +17,11 @@ import re
 from dataclasses import dataclass
 from typing import Dict
 
-RULESET_ID = "crewscore-hygiene@0.6.0"
+RULESET_ID = "prompt-safeguards@0.6.0"
 
 
 def overall_score(dimensions: dict[str, int]) -> int:
-    """Mean of the eight dimension scores, floored (CrewScore scoring.py)."""
+    """Mean of the eight dimension scores, floored, as in the original tool."""
     if not dimensions:
         return 0
     return sum(dimensions.values()) // len(dimensions)
@@ -469,8 +469,8 @@ class Concept:
 # The rules of each dimension, grouped into the distinct controls they express.
 #
 # This grouping is the scoring denominator, so it is the most consequential
-# judgement in the catalog and is deliberately visible: `crewscore rules`
-# prints it, and a reader who disagrees with a grouping can argue with it in
+# judgement in the catalog and is deliberately visible: the original tool's
+# `rules` command printed it, and a reader who disagrees with a grouping can argue with it in
 # an issue. Regrouping changes scores and requires a version bump.
 CONCEPTS: dict[str, tuple[Concept, ...]] = {
     "injection": (
@@ -693,7 +693,7 @@ def _score_dimension(prompt_lower: str, dimension: str) -> int:
     )
 
 
-# NOTE: CrewScore used to award a length bonus (up to +10 per dimension for
+# NOTE: the original tool used to award a length bonus (up to +10 per dimension for
 # prompts over 500 words). It was removed in ruleset 0.3.0.
 #
 # Two reasons, both decisive:
@@ -708,7 +708,7 @@ def _score_dimension(prompt_lower: str, dimension: str) -> int:
 #      formula did not match the code.
 #
 # Scores are now purely a function of rule matches. Length is reported as a
-# smell (see crewscore/smells.py), never as points.
+# smell in the original tool, never as points.
 
 
 def _missing_finding(dimension: str, concept: Concept) -> dict:
